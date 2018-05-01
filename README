@@ -1,7 +1,7 @@
-bitcoin-seeder
+syscoin-seeder
 ==============
 
-Bitcoin-seeder is a crawler for the Bitcoin network, which exposes a list
+Syscoin-seeder is a crawler for the Syscoin network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
 Features:
