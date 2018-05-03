@@ -400,14 +400,14 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seed1.syscoin.org", "seed2.syscoin.org", "seed3.syscoin.org", "seed4.syscoin.org", ""};
+static const string mainnet_seeds[] = {"seed1.syscoin.org", "seed2.syscoin.org", ""};
 static const string testnet_seeds[] = {"testnet-seed1.syscoin.org", ""};
 
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8379), true);
+    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8369), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
