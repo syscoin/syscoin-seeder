@@ -36,7 +36,7 @@ class CNode {
     nHeaderStart = vSend.size();
     vSend << CMessageHeader(pszCommand, 0);
     nMessageStart = vSend.size();
-    printf("%s: SEND %s\n", ToString(you).c_str(), pszCommand);
+//    printf("%s: SEND %s\n", ToString(you).c_str(), pszCommand); 
   }
   
   void AbortMessage() {
