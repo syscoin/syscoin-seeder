@@ -6,7 +6,10 @@
 #include "serialize.h"
 #include "uint256.h"
 
-#define BITCOIN_SEED_NONCE  0x0539a019ca550825ULL
+#define BITCOIN_SEED_NONCE 0x0539a019ca550825ULL
+
+// Nodes older than this protocol version will be banned and marked bad
+static const int MIN_VERSION = 70222;
 
 using namespace std;
 
@@ -279,16 +282,24 @@ public:
 bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV, int &blocks, vector<CAddress>* vAddr) {
   try {
     CNode node(cip, vAddr);
+
     bool ret = node.Run();
-    if (!ret) {
-      ban = node.GetBan();
-    } else {
-      ban = 0;
-    }
     clientV = node.GetClientVersion();
     clientSV = node.GetClientSubVersion();
     blocks = node.GetStartingHeight();
-//  printf("%s: %s!!!\n", cip.ToString().c_str(), ret ? "GOOD" : "BAD");
+
+    if (!ret) {
+      ban = node.GetBan();
+    } else {
+      if (clientV < MIN_VERSION) {
+        ret = 0;
+        ban = 1;
+      } else {
+        ban = 0;
+      }
+    }
+
+    // printf("%s: %d, %s!!!\n", cip.ToString().c_str(), clientV, ret ? "GOOD" : "BAD");
     return ret;
   } catch(std::ios_base::failure& e) {
     ban = 0;
