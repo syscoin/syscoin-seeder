@@ -9,7 +9,7 @@
 #define BITCOIN_SEED_NONCE 0x0539a019ca550825ULL
 
 // Nodes older than this protocol version will be banned and marked bad
-static const int MIN_VERSION = 70222;
+static const int MIN_VERSION = 70015;
 
 using namespace std;
 
@@ -291,7 +291,9 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
     if (!ret) {
       ban = node.GetBan();
     } else {
-      if (clientV < MIN_VERSION) {
+    //  if (clientV < MIN_VERSION) {
+      if (clientV != MIN_VERSION) {
+        // TODO: Change this back after releas stablized
         ret = 0;
         ban = 1;
       } else {
