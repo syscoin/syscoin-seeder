@@ -292,7 +292,7 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
       ban = node.GetBan();
     } else {
     //  if (clientV < MIN_VERSION) {
-      if (clientV != MIN_VERSION) {
+      if (clientV < MIN_VERSION) {
         // TODO: Change this back after releas stablized
         ret = 0;
         ban = 1;
