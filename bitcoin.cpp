@@ -297,7 +297,12 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
         // TODO: Change this back after releas stablized
         ret = 0;
         ban = 1;
-      } else {
+        // TODO: update this as checkpoints
+      } else if(blocks < 238000){
+        ret = 0;
+        ban = 1;
+      }
+      else {
         ban = 0;
       }
     }
