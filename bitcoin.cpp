@@ -298,11 +298,11 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
         ret = 0;
         ban = 1;
         // TODO: update this as checkpoints
-      } else if(blocks < 297723){
+      } else if(blocks < 315000){
         ret = 0;
         ban = 1;
       }
-      else if(clientSV.find("/Satoshi:4.1.0/") == clientSV.end()){
+      else if(clientSV.find("/Satoshi:4.1.1/") == clientSV.end()){
         ret = 0;
         ban = 1;     
       }
