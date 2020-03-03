@@ -85,7 +85,7 @@ class CNode {
     CAddress me(CService("0.0.0.0"));
     BeginMessage("version");
     int nBestHeight = GetRequireHeight();
-    string ver = "/syscoin-seeder:0.01/";
+    string ver = "/syscoin-seeder:0.02/";
     uint8_t fRelayTxs = 0;
     vSend << PROTOCOL_VERSION << nLocalServices << nTime << you << me << nLocalNonce << ver << nBestHeight << fRelayTxs;
     EndMessage();
@@ -322,11 +322,11 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
         ret = 0;
         ban = 1;
         // TODO: update this as checkpoints
-      } else if(blocks < 320500){
+      } else if(blocks < 398000){
         ret = 0;
         ban = 1;
       }
-      else if(clientSV.find("/Satoshi:4.1.2/") == std::string::npos){
+      else if(clientSV.find("/Satoshi:4.1.3/") == std::string::npos){
         ret = 0;
         ban = 1;     
       }
