@@ -322,7 +322,7 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
         ret = 0;
         ban = 1;
         // TODO: update this as checkpoints
-      } else if(blocks < 398000){
+      } else if(blocks < 421523){
         ret = 0;
         ban = 1;
       }
