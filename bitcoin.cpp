@@ -323,7 +323,7 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
         ret = 0;
         ban = 1;
       }
-      else if(clientSV.find("/Satoshi:4.2.0/") == std::string::npos && clientSV.find("/Satoshi:4.2.1/") == std::string::npos){
+      else if(clientSV.find("/Satoshi:4.2.1/") == std::string::npos && clientSV.find("/Satoshi:4.2.2/") == std::string::npos){
         ret = 0;
         ban = 1;     
       }
