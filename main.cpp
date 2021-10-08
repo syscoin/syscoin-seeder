@@ -422,7 +422,7 @@ extern "C" void* ThreadStats(void*) {
 }
 
 static const string mainnet_seeds[] = {"node1.syscoin.org", "node2.syscoin.org", "node3.syscoin.org", "node4.syscoin.org", ""};
-static const string testnet_seeds[] = {"testnet-seed1.syscoin.org", ""};
+static const string testnet_seeds[] = {"testseed1.syscoin.org", "testseed2.syscoin.org", ""};
 
 static const string *seeds = mainnet_seeds;
 
@@ -480,7 +480,7 @@ int main(int argc, char **argv) {
       pchMessageStart[0] = 0xce;
       pchMessageStart[1] = 0xe2;
       pchMessageStart[2] = 0xca;
-      pchMessageStart[3] = 0xff;
+      pchMessageStart[3] = 0xfe;
       seeds = testnet_seeds;
       fTestNet = true;
   }
