@@ -180,7 +180,7 @@ int static write_record_aaaa(unsigned char** outpos, const unsigned char *outend
   int error = 0;
   int ret = write_record(outpos, outend, name, offset, TYPE_AAAA, cls, ttl);
   if (ret) return ret;
-  if (outend - *outpos < 6) {
+  if (outend - *outpos < 18) {
     error = -5;
   } else {
     // rdlength
@@ -425,7 +425,7 @@ int dnsserver(dns_opt_t *opt) {
     memset((char *) &si_me, 0, sizeof(si_me));
     si_me.sin6_family = AF_INET6;
     si_me.sin6_port = htons(opt->port);
-    si_me.sin6_addr = in6addr_any;
+    inet_pton(AF_INET6, opt->addr, &si_me.sin6_addr);
     if (bind(listenSocket, (struct sockaddr*)&si_me, sizeof(si_me))==-1)
       return -2;
   }
