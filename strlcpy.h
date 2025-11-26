@@ -24,6 +24,7 @@
  * will be copied.  Always NUL terminates (unless siz == 0).
  * Returns strlen(src); if retval >= siz, truncation occurred.
  */
+#if !defined(__GLIBC__) || (__GLIBC__ < 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ < 38)
 inline size_t strlcpy(char *dst, const char *src, size_t siz)
 {
     char *d = dst;
@@ -87,4 +88,8 @@ inline size_t strlcat(char *dst, const char *src, size_t siz)
 
     return(dlen + (s - src)); /* count does not include NUL */
 }
+#else
+// Use the system-provided versions
+#endif
+
 #endif

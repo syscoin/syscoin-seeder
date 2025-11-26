@@ -158,7 +158,7 @@ void CAddrDb::Add_(const CAddress &addr, bool force) {
   int id = nId++;
   idToInfo[id] = ai;
   ipToId[ipp] = id;
-  printf("%s: added\n", ToString(ipp).c_str(), ipToId[ipp]);
+  printf("%s: added (id: %d)\n", ToString(ipp).c_str(), ipToId[ipp]);
   unkId.insert(id);
   nDirty++;
 }
